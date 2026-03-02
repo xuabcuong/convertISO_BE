@@ -1,0 +1,7 @@
+spring:
+  datasource:
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080

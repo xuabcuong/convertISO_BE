@@ -1,5 +1,6 @@
 package com.example.convert_iso.controller;
 
+import org.springframework.web.bind.annotation.*;
 import com.example.convert_iso.iso8583.Iso20022toIso8583;
 import com.example.convert_iso.iso8583.Iso8583toIso20022;
 import org.springframework.boot.jackson.autoconfigure.JacksonProperties;
@@ -15,6 +16,8 @@ import tools.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.util.Map;
 
+
+@CrossOrigin(origins = "https://convert-iso-fe.vercel.app")
 @RestController
 @RestControllerAdvice
 @RequestMapping("/api")

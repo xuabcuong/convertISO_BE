@@ -1,29 +1,13 @@
-# ===== BUILD STAGE =====
-FROM eclipse-temurin:17-jdk AS builder
-
+# Stage 1: Build
+FROM gradle:8.5-jdk17 AS build
 WORKDIR /app
-
-# copy gradle wrapper trước (cache tốt hơn)
-COPY gradlew .
-COPY gradle gradle
-COPY build.gradle settings.gradle ./
-
+COPY . .
 RUN chmod +x gradlew
-RUN ./gradlew dependencies --no-daemon || true
+RUN ./gradlew build -x test
 
-# copy source
-COPY src src
-
-RUN ./gradlew bootJar --no-daemon
-
-
-# ===== RUN STAGE =====
-FROM eclipse-temurin:17-jre
-
+# Stage 2: Run
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
-
-COPY --from=builder /app/build/libs/convert_ISO-0.0.1-SNAPSHOT.jar app.jar
-
+COPY --from=build /app/build/libs/*.jar app.jar
 EXPOSE 8080
-
 ENTRYPOINT ["java","-jar","app.jar"]
