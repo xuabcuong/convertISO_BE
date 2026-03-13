@@ -2,6 +2,8 @@ package com.example.convert_iso.convert;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ConvertDateTime {
 
@@ -49,4 +51,13 @@ public class ConvertDateTime {
                 + time.substring(17, 19);// ss
     }
 
+    public static String convertsubstring(String time) {
+        String isoDate = "2025-09-21T18:47:04.101Z";
+
+        OffsetDateTime dateTime = OffsetDateTime.parse(isoDate);
+        String result = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        System.out.println(result);
+        return result;
+    }
 }

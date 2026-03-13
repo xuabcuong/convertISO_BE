@@ -8,9 +8,8 @@ public class BankCodeToSwiftMap {
     public static String getBICbankcode(String bankCode) {
         String bicCode = createBankCodeToSwiftMap().get(bankCode);
 
-
         if (bicCode == null) {
-
+            System.out.println(bankCode);
             throw new IllegalArgumentException("field ko hợp lệ");
         } else {
             return bicCode;
@@ -21,7 +20,7 @@ public class BankCodeToSwiftMap {
     public static Map<String, String> createBankCodeToSwiftMap() {
         Map<String, String> map = new HashMap<>();
 
-        // Big 4
+
         map.put("970499", "VBAAVNVX"); // Agribank
         map.put("970489", "ICBVVNVX"); // VietinBank
         map.put("970488", "BIDVVNVX"); // BIDV

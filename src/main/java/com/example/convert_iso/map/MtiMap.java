@@ -19,29 +19,6 @@ public class MtiMap {
         return messCode;
     }
 
-    public static String getServiceCode(String serviceCode) {
-        Map<String, String> map = MapMessCodeToServiceCode();
-
-        String messCode = map.get(serviceCode);
-
-        if (messCode == null) {
-            throw new IllegalArgumentException(
-                    "ServiceCode không hợp lệ: " + serviceCode
-            );
-        }
-        return messCode;
-    }
-
-    public static Map<String, String> MapMessCodeToServiceCode() {
-        Map<String, String> map = new HashMap<>();
-
-        map.put("CA03", "0100");
-        map.put("CA04", "0200");
-        map.put("PA08", "0300");
-
-        return map;
-    }
-
     ;
 
     public static Map<String, String> MapServiceCodeToMesscode() {
